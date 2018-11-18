@@ -1,0 +1,5 @@
+.idea
+educationFrontend/src/main/resources/node_modules
+package-lock.json
+backend/target
+educationFrontend/target
