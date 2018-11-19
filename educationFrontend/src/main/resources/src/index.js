@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let config = {
         method: "GET",
-        url: projectConsts.url + "/api/public/getDevicesInfo",
+        url: "/data/input.json",
         contentType: "application/json",
     };
 
