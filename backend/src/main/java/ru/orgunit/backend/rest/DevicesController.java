@@ -17,22 +17,20 @@ import java.util.List;
 @RestController()
 public class DevicesController {
 
-    @Autowired
-    private DeviceService deviceService;
 
     @RequestMapping("/api/public/getDevicesInfo")
     public FullDevicesInfoDto getDevicesInfo () {
-        return deviceService.getAllDevices();
+        return null;
     }
 
     @RequestMapping("/api/public/getAppliencesInfo")
     public List<ApplianceDto> getAppliencesInfo () {
-        return deviceService.getAppliencesInfo();
+        return null;
     }
 
     @RequestMapping("/api/public/setValueToAppliance")
     public ApplianceDto setValueToAppliance (@RequestBody ApplianceDto applianceDto) {
-        return deviceService.setValueToAppliance(applianceDto);
+        return null;
     }
 
 }
