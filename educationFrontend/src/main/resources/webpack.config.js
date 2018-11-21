@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
       // path: PUBLIC_PATH,
-      path: PUBLIC_PATH + "/target",
+      path: PUBLIC_PATH,
       filename: "index.js",
       library: "index"
   },

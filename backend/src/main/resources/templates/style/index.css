@@ -64,12 +64,22 @@ a {
     justify-content: flex-start;
 }
 .logo {
-    background: url('assets/ya_dom.svg') no-repeat center;
+    background: url('assets/ADT.png') no-repeat center;
     width: 108px;
-    height: 27px;
+    /*height: 27px;*/
+    height: 80px;
     background-size: 100%;
-    margin-right: 42px;
+    margin-right: 20px;
 
+}
+.title {
+    font-size: 20px;
+    font-weight: bold;
+
+    margin-right: 42px;
+}
+.red {
+    color: #3c3778;
 }
 .menu {
 
@@ -277,6 +287,15 @@ a {
     background-size: 100%;
 }
 
+.sound {
+    background: url('assets/icon_sound.png') center no-repeat;
+    background-size: 100%;
+}
+.bright_sound {
+    background: url('assets/icon_sound_bright.png') center no-repeat;
+    background-size: 100%;
+}
+
 
 .elect_scripts {
     width: calc(50% - 13px);
@@ -465,7 +484,7 @@ a {
 .top_treshold_sun {
     position: absolute;
     top: 14px;
-    right: 20px;
+    right: 14px;
     width: 32px;
     height: 32px;
     background: url('assets/icon_sun_max.svg') center no-repeat;
@@ -506,7 +525,7 @@ a {
     text-align: center;
 }
 .button_ok {
-    width: 49%;
+    width: 100%;
     background: #FFD93E;
     border-radius: 20px;
     display: flex;

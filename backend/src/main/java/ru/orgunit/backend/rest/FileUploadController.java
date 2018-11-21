@@ -1,23 +1,14 @@
 package ru.orgunit.backend.rest;
 
 import org.apache.commons.io.IOUtils;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.util.stream.Collectors;
 
 @Controller
 public class FileUploadController {
@@ -35,7 +26,7 @@ public class FileUploadController {
     }
 
 
-    @GetMapping({"/style/fonts/**", "/style/assets/**", "/index.js"})
+    @GetMapping(value = {"/style/fonts/**", "/style/assets/**.png"}, produces = {"image/png", "font/tiff"})
     @ResponseBody
     public byte[] serveFile(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String uri = request.getRequestURI();
@@ -50,19 +41,46 @@ public class FileUploadController {
             e.printStackTrace();
         }*/
 
-        if (uri.contains("svg") || uri.contains("png") || uri.contains("ttf") || uri.contains("js")) {
+        if (uri.contains("svg") || uri.contains("png") || uri.contains("ttf")) {
             InputStream in = getClass()
                     .getResourceAsStream("/templates" + uri);
+
             return IOUtils.toByteArray(in);
         }
 
         return null;
+    }
 
-/*        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + file.getFilename() + "\"").body(file);*/
+    @GetMapping(value = {"/style/assets/**.svg", "/style/assets/Icons/**.svg"}, produces = {"image/svg+xml"})
+    @ResponseBody
+    public byte[] sereSvg(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String uri = request.getRequestURI();
 
-//return null;
+        if (uri.contains("svg")) {
+            InputStream in = getClass()
+                    .getResourceAsStream("/templates" + uri);
 
+            return IOUtils.toByteArray(in);
+        }
+
+        return null;
+    }
+
+    @GetMapping(value = "/index.js", produces = "application/javascript;charset=UTF-8")
+    @ResponseBody
+    public byte[] serveScripts(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String uri = request.getRequestURI();
+
+        response.setHeader("Content-Type", "application/javascript; charset=UTF-8");
+
+        if (uri.contains("js")) {
+            InputStream in = getClass()
+                    .getResourceAsStream("/templates" + uri);
+
+            return IOUtils.toByteArray(in);
+        }
+
+        return null;
     }
 
 //    @GetMapping("{filePath:.*}{filename:.+}")
@@ -70,10 +88,9 @@ public class FileUploadController {
     public String getStaticFiles (HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String uri = request.getRequestURI();
-/*
         if (uri.contains(".js")) {
             response.addHeader("Content-type", "application/javascript;charset=UTF-8");
-        }*/
+        }
 
         return  request.getRequestURI();
 

@@ -1,11 +1,8 @@
 package ru.orgunit.backend;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.CacheControl;
-import org.springframework.web.servlet.config.annotation.*;
-
-import java.util.concurrent.TimeUnit;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * Config раздающий статику
@@ -45,5 +42,13 @@ public class MvcConfig implements WebMvcConfigurer {
                 registry.addMapping("/api/*").allowedOrigins("http://localhost:3000");
             }
         };
+    }*/
+
+    /**
+     * Setup a simple strategy: use all the defaults and return XML by default when not sure.
+     */
+/*    @Override
+    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        configurer.defaultContentType(MediaType.TEXT_HTML);
     }*/
 }
