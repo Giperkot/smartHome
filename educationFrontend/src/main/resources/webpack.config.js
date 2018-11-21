@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
       // path: PUBLIC_PATH,
-      path: "C:\\Users\\Lodbrok\\Documents\\javaProjects\\educationWeb\\backend\\src\\main\\resources\\templates",
+      path: PUBLIC_PATH + "/target",
       filename: "index.js",
       library: "index"
   },
